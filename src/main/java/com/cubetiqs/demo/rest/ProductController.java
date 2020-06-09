@@ -1,0 +1,23 @@
+package com.cubetiqs.demo.rest;
+
+import com.cubetiqs.demo.domain.Product;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
+@RestController
+@RequestMapping(path = "/products")
+public class ProductController {
+    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
+    public List<Product> getAllProducts() {
+        List<Product> items = new ArrayList<>();
+        items.add(new Product(1L, "Apple", BigDecimal.valueOf(1.0), false));
+        items.add(new Product(2L, "Apple", BigDecimal.valueOf(0.5), true));
+        return items;
+    }
+}
