@@ -1,32 +1,35 @@
 package com.cubetiqs.demo.rest;
 
 import com.cubetiqs.demo.domain.Product;
+import com.cubetiqs.demo.repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping(path = "/products")
 public class ProductController {
-    private final List<Product> items = new ArrayList<>();
+    private final ProductRepository productRepository;
+
+    @Autowired
+    public ProductController(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
 
     @RequestMapping(method = {RequestMethod.GET})
     public List<Product> getAllProducts() {
-        items.add(new Product(1L, "Apple", BigDecimal.valueOf(1.0), false));
-        items.add(new Product(2L, "Apple", BigDecimal.valueOf(0.5), true));
-        return items;
+        return productRepository.findAll();
     }
 
     @GetMapping("/{id}")
-    public Product getOneProduct(@PathVariable int id) {
-        return items.get(id);
+    public Product getOneProduct(@PathVariable Long id) {
+        return productRepository.findById(id).orElse(null);
     }
 
     @PostMapping
     public Product createProduct(@RequestBody Product item) {
-        items.add(item);
-        return item;
+        return productRepository.save(item);
     }
 }
