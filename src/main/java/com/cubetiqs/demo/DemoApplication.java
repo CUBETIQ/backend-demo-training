@@ -1,9 +1,12 @@
 package com.cubetiqs.demo;
 
 import com.cubetiqs.demo.domain.UserEntity;
+import com.cubetiqs.demo.rest.UserController;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.io.File;
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
