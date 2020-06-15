@@ -12,7 +12,7 @@ public class BaseEntity<ID extends Serializable> implements Serializable, Persis
     @GeneratedValue(strategy = GenerationType.AUTO)
     private ID id;
 
-    @Column(name = "created_date")
+    @Column(name = "created_date", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
 

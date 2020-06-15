@@ -1,0 +1,12 @@
+server:
+  port: 8080
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: cubetiq
+    password: Root$
+    url: jdbc:mysql://192.168.0.150:3306/demo
