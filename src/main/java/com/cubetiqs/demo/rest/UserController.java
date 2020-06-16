@@ -2,6 +2,7 @@ package com.cubetiqs.demo.rest;
 
 import com.cubetiqs.demo.domain.UserEntity;
 import com.cubetiqs.demo.repository.UserRepository;
+import com.cubetiqs.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -9,21 +10,24 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping(path = {"/users"})
 public class UserController {
     private final UserRepository userRepository;
+    private final UserService userService;
 
     @Autowired
-    public UserController(UserRepository userRepository) {
+    public UserController(UserRepository userRepository, UserService userService) {
         this.userRepository = userRepository;
+        this.userService = userService;
     }
 
     @GetMapping
-    public Page<UserEntity> getAllUsers(Pageable pageable) {
-        return userRepository.findAll(pageable);
+    public List<UserEntity> getAllUsers(Pageable pageable) {
+        return userService.findAllUsers();
     }
 
     @GetMapping("/{id}")
