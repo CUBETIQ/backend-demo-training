@@ -1,5 +1,7 @@
 package com.cubetiqs.demo.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.NoRepositoryBean;
 
 import java.io.Serializable;
@@ -10,5 +12,10 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
     @Override
     public List<T> findAll() {
         return getRepository().findAll();
+    }
+
+    @Override
+    public Page<T> findAll(Pageable pageable) {
+        return getRepository().findAll(pageable);
     }
 }
