@@ -4,7 +4,6 @@ import com.cubetiqs.demo.domain.UserEntity;
 import com.cubetiqs.demo.repository.UserRepository;
 import com.cubetiqs.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +26,7 @@ public class UserController {
 
     @GetMapping
     public List<UserEntity> getAllUsers(Pageable pageable) {
-        return userService.findAllUsers();
+        return userService.findAll();
     }
 
     @GetMapping("/{id}")
