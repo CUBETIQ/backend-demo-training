@@ -18,4 +18,9 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
     public Page<T> findAll(Pageable pageable) {
         return getRepository().findAll(pageable);
     }
+
+    @Override
+    public List<T> findAllActives() {
+        return getRepository().findAllActives();
+    }
 }

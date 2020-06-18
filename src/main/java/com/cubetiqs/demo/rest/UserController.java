@@ -26,7 +26,7 @@ public class UserController {
 
     @GetMapping
     public List<UserEntity> getAllUsers(Pageable pageable) {
-        return userService.findAll();
+        return userService.findAllActives();
     }
 
     @GetMapping("/{id}")

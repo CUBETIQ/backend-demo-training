@@ -1,5 +1,6 @@
 package com.cubetiqs.demo.domain;
 
+import com.cubetiqs.demo.Constants;
 import org.springframework.data.domain.Persistable;
 
 import javax.persistence.*;
@@ -15,6 +16,10 @@ public class BaseEntity<ID extends Serializable> implements Serializable, Persis
     @Column(name = "created_date", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
+
+    @Column(name = Constants.STATUS)
+    @Enumerated(EnumType.ORDINAL)
+    private Status status;
 
     public void setId(ID id) {
         this.id = id;
@@ -36,6 +41,14 @@ public class BaseEntity<ID extends Serializable> implements Serializable, Persis
 
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public Status getStatus() {
+        return status;
     }
 
     @PrePersist

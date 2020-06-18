@@ -26,7 +26,7 @@ public class PostController {
             @RequestParam(value = "q", defaultValue = "") String q
     ) {
         if ("list".equalsIgnoreCase(viewType)) {
-            return ResponseEntity.ok(postService.findAll());
+            return ResponseEntity.ok(postService.findAllActives());
         }
         return ResponseEntity.ok(postService.findAll(pageable));
     }

@@ -14,4 +14,5 @@ public interface BaseService<T, ID extends Serializable> {
     Page<T> findAll(Pageable pageable, String q);
     Page<T> findAll(Pageable pageable);
     List<T> findAll();
+    List<T> findAllActives();
 }
