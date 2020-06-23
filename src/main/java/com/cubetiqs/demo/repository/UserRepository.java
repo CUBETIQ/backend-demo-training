@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-@SuppressWarnings("ALL")
 @Repository
 public interface UserRepository extends BaseRepository<UserEntity, Long> {
     Optional<UserEntity> findFirstByEmail(String email);
